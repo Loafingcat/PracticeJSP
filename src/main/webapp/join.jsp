@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.io.PrintWriter" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +12,7 @@
 <link rel="stylesheet" href="css/custom.css">
 <title>JSP 게시판 웹 사이트</title>
 </head>
+
 <body>
 	<!-- 네비게이션 영역 -->
 	<nav class="navbar navbar-default">
@@ -59,8 +61,14 @@
 						<!-- placeholder는 현재 어떠한 것도 입력되지 않았을 때 보여주는 것 -->
 						<input type="text" class="form-control" placeholder="아이디" name="userID" maxlength="20">
 					</div>
-					<div class="form-group">
-						<input type="password" class="form-control" placeholder="비밀번호" name="userPassword" maxlength="20">
+					<div class="content_title">비밀번호</div>
+					<div class="content_content">
+						<input type="password" class="form-control" placeholder="비밀번호" name="userPassword" id="userPassword" maxlength="20">
+					</div>
+					<div class="content_title">비밀번호 확인</div>
+					<div class="content_content">
+						<input type="password" class="form-control" placeholder="비밀번호 확인" name="userPassword2" id="userPassword2" maxlength="20">
+						
 					</div>
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="이름" name="userName" maxlength="20">
@@ -85,7 +93,7 @@
 	</div>
 	
 	<!-- 부트스트랩 참조 영역 -->
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="js/bootstrap.js"></script>
 </body>
 </html>

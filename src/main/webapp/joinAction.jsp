@@ -6,6 +6,7 @@
 <jsp:useBean id="user" class="user.User" scope="page" />
 <jsp:setProperty name="user" property="userID" />
 <jsp:setProperty name="user" property="userPassword" />
+<jsp:setProperty name="user" property="userPassword2" />
 <jsp:setProperty name="user" property="userName" />
 <jsp:setProperty name="user" property="userGender" />
 <jsp:setProperty name="user" property="userEmail" />
@@ -22,37 +23,51 @@
 		if(session.getAttribute("userID") != null) {
 		userID = (String) session.getAttribute("userID");
 		}
+		//이미 로그인 했으면 회원가입을 할 수 없게 한다
 		if (userID != null) {
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('이미 로그인이 되어있습니다.')");
-			script.println("location.href = 'main.jsp");
+			script.println("location.href = 'main.jsp'");
 			script.println("</script>");
 		}
-		if(user.getUserID() == null || user.getUserPassword() == null || user.getUserName() == null 
+		
+		if(user.getUserID() == null || user.getUserPassword() == null || user.getUserPassword2() == null || user.getUserName() == null 
 			|| user.getUserGender() == null || user.getUserEmail() == null) {
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('입력이 안 된 사항이 있습니다.')");
 			script.println("history.back()");
 			script.println("</script>");
-		} else {
+			} 
+		
+		if(!user.getUserPassword().equals(user.getUserPassword2())) {
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("alert('비밀번호가 일치하지 않습니다.')");
+			script.println("history.back()");
+			script.println("</script>");
+				
+			} else {
+				
 			UserDAO userDAO = new UserDAO();
 			int result = userDAO.join(user);
+			
 			if (result == -1) {
 				PrintWriter script = response.getWriter();
 				script.println("<script>");
 				script.println("alert('이미 존재하는 아이디입니다.')");
 				script.println("history.back()");
 				script.println("</script>");
-			}
-			else {
+			} else {
 				session.setAttribute("userID", user.getUserID());
 				PrintWriter script = response.getWriter();
 				script.println("<script>");
+				script.println("alert('회원가입 성공.')");
 				script.println("location.href = 'main.jsp'");
 				script.println("</script>");
-			}	
+			}
+			
 		}
 	%>
 	

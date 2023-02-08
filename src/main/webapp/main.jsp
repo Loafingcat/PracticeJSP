@@ -89,6 +89,7 @@
 	<!-- 메인 페이지 이미지 삽입 영역 -->
 	<div class="container">
 		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+		<!-- 순서가 있는 항목이니 ol 사용 -->
 			<ol class="carousel-indicators">
 				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 				<li data-target="#myCarousel" data-slide-to="1"></li>

@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <!-- 컴퓨터 폰 해상도에 맞게 디자인 변경되는 반응형 웹 메타태그 -->
-<meta name="viewport" content="width=device-width", initial-scale="1">
+<meta name="viewport" content="width=device-width, initial-scale= 1">
 <!-- css폴더 안의 bootstrap.css를 참조해서 홈페이지 디자인을 사용하는 링크 -->
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/custom.css">
