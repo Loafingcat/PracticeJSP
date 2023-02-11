@@ -12,7 +12,6 @@
 <link rel="stylesheet" href="css/custom.css">
 <title>JSP 게시판 웹 사이트</title>
 </head>
-
 <body>
 	<!-- 네비게이션 영역 -->
 	<nav class="navbar navbar-default">
@@ -57,9 +56,11 @@
 			<!-- post는 회원가입이나 로그인 같이 어떠한 정보를 숨기면서 보낼 떄 사용하는 메소드 -->
 				<form method="post" action="joinAction.jsp">
 					<h3 style="text-align: center;">회원가입 화면</h3>
-					<div class="form-group">
-						<!-- placeholder는 현재 어떠한 것도 입력되지 않았을 때 보여주는 것 -->
-						<input type="text" class="form-control" placeholder="아이디" name="userID" maxlength="20">
+					<div class="content_title">아이디</div>
+					<div class="content_content">
+						<input type="text" class="form-control" placeholder="아이디" name="userID" id="userID" maxlength="20">
+						<div style="width: 100px;"><button class="btn btn-primary" onclick="idCheck" type="button">중복체크</button>
+					</div>
 					</div>
 					<div class="content_title">비밀번호</div>
 					<div class="content_content">

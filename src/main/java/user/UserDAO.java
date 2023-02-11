@@ -57,4 +57,32 @@ public class UserDAO {
 		}
 		return -1; //데이터베이스 오류
 	}
+	
+	public int registerCheck(String userID) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String SQL = "SELECT * FROM USER WHERE userID = ?";
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userID);
+			rs = pstmt.executeQuery();
+			if (rs.next() || userID.equals("")) {
+				return 0;
+			}
+			else {
+				return 1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return -1;
+	}
+	
 }
