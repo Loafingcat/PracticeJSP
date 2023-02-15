@@ -15,10 +15,11 @@
 
 	<%
 		
-			PrintWriter script = response.getWriter();
-			script.println("<script>");
-			script.println("alert('중복체크.')");
-			script.println("</script>");
+		String userID = request.getParameter("id");
+		UserDAO userDAO = new UserDAO();
+		int result = userDAO.userIdCheck(userID);
+		
+		
 		
 	%>
 	

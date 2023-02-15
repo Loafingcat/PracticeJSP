@@ -1,6 +1,6 @@
 package user;
 
-import java.sql.Connection;
+import java.sql.Connection; 
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -58,7 +58,7 @@ public class UserDAO {
 		return -1; //데이터베이스 오류
 	}
 	
-	public int registerCheck(String userID) {
+	public int userIdCheck(String userID) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String SQL = "SELECT * FROM USER WHERE userID = ?";
@@ -66,11 +66,11 @@ public class UserDAO {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, userID);
 			rs = pstmt.executeQuery();
-			if (rs.next() || userID.equals("")) {
-				return 0;
+			if (rs.next()) {
+				return 1;
 			}
 			else {
-				return 1;
+				return 0;//가입 가능한 회원
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -82,7 +82,7 @@ public class UserDAO {
 				e.printStackTrace();
 			}
 		}
-		return -1;
+		return -1;//db오류
 	}
 	
 }
