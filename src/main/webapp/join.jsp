@@ -15,8 +15,8 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	//아이디 중복 체크 여부 및 중복 여부 기록
-	var count = 0; //0은 중복 체크를 하지 않은 상태, 중복된 상태
-	               //1은 중복 체크를 한 결과 중복되지 않은 상태
+	var count = 0; //0은 중복 체크를 하지 않은 상태 || 중복체크 로직 결과로 나온
+	               //1은 중복 체크를 한 결과 중복되지 않은 상태를 뜻함
 	
 	//이벤트 연결               
 	$('#chk').click(function(){
@@ -51,7 +51,7 @@ $(document).ready(function(){
 		});
 		
 	});          
-	               
+	//무슨 역할인지 숙제!!!               
 	$('#insert_form #userID').keydown(function(){
 		$('#id_signed').text('');
 		count = 0;

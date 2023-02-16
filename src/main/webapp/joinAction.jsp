@@ -15,7 +15,6 @@
 <head>
 <meta charset="UTF-8">
 <title>JSP 게시판 웹 사이트</title>
-
 </head>
 <body>
 
@@ -41,7 +40,7 @@
 			script.println("history.back()");
 			script.println("</script>");
 			} 
-		
+		//if문 부정 안쓰고 구현 숙제!!!
 		if(!user.getUserPassword().equals(user.getUserPassword2())) {
 			PrintWriter script = response.getWriter();
 			script.println("<script>");

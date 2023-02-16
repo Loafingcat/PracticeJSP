@@ -23,7 +23,7 @@
 		Class.forName("org.mariadb.jdbc.Driver");
 		conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 	
-		sql = "select userPassword from user where userID = ?";
+		sql = "SELECT * FROM USER WHERE userID = ?";
 		
 		pstmt = conn.prepareStatement(sql);
 		
@@ -40,27 +40,28 @@
 		{"result":"idNotFound"}
 <%			
 		}
-	}catch(Exception e){
+		}catch(Exception e){
 %>
 		{"result":"failure"}
 <%
-	e.printStackTrace();
-	} finally {
-	//다 종료시켜 줘야함
-	if (rs != null)
-		try {
-			rs.close();
-		} catch (SQLException e) {
+		e.printStackTrace();
+		} finally {
+		//다 종료시켜 줘야함
+		if (rs != null)
+			try {
+				rs.close();
+			} catch (SQLException e) {
+			}
+		if (pstmt != null)
+			try {
+				pstmt.close();
+			} catch (SQLException e) {
+				
+			}
+		if (conn != null)
+			try {
+				conn.close();
+			} catch (SQLException e) {
 		}
-	if (pstmt != null)
-		try {
-			pstmt.close();
-		} catch (SQLException e) {
-		}
-	if (conn != null)
-		try {
-			conn.close();
-		} catch (SQLException e) {
-	}
-}
+	}	
 %>
